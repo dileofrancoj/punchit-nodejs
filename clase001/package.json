@@ -1,0 +1,28 @@
+{
+  "name": "clase001",
+  "version": "1.0.0",
+  "description": "Introduccion a NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "start-dev": "nodemon node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dileofrancoj"
+  },
+  "keywords": [
+    "Node",
+    "basic",
+    "API"
+  ],
+  "author": "Franco Di leo",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
+}

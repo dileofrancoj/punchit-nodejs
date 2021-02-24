@@ -1,0 +1,47 @@
+FORMAT: 1A
+
+# Basic Ecommerce API
+
+# Group Products
+
+Recurso que interactua con los productos de la API
+
+## Products collection [/products]
+
+### Listar todos los productos [GET]
+
++ Response 200 (application/json)
+
+        
+        {
+            "title" : "Televisor",
+            "price" : 200000,
+            "condition" : "new",
+            "enable" : true,
+            "ts_create" : "la fecha que quieras",
+            "available_quantity" : 100
+        }
+    
+
+### Crear un nuevo producto [POST]
+
+
++ title (string) 
++ price (number)
++ condition (string)
++ available_quantity (number)
+
++ Request (application/json)
+
+        {
+            "title": "Televisor",
+            "price": 2000,
+            "condition" : "new",
+            "available_quantity" : 100
+        }
+
++ Response 201 (application/json)
+
+        {
+            "_id" : "60123912"   
+        }

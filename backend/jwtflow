@@ -1,0 +1,10 @@
+[LOGIN]
+App.js -> ruta (auth.js) -> controller (auth.js) -> respuesta
+                                |
+                            service (auth)-> generar el JWT
+
+Purchase
+
+App.js -> ruta (purchase.js) -> ruta protegida
+           |
+        middleware -> service (auth.js) -> decodificar el JWT (decode)

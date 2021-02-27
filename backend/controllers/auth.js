@@ -1,21 +1,26 @@
 const User = require("../models/User");
 const { hash, unhash } = require("../utils/bcrypt");
+const { createToken } = require("../services/auth");
 
 const auth = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email }, { password: 1 });
-    // Genero JWT con user._id
-    console.log(user.password);
     const isPasswordValid = unhash(password, user.password);
-    console.log(isPasswordValid);
+
+    const JWTObject = {
+      _id: user._id, // id -> servidor
+      email, // cliente
+    };
+
+    const JWT = createToken(JWTObject);
+
     if (!isPasswordValid) {
       return res
         .status(401)
         .json({ message: "Usuario o password incorrectos" });
     }
-    res.json({ message: "Bienvenid@", JWT: user._id });
-    res.end();
+    res.json({ message: "Bienvenid@", JWT });
   } catch (e) {}
 };
 

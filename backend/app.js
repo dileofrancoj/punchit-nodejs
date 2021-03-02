@@ -12,6 +12,7 @@ dbConnection();
 const products = require("./routes/products");
 const auth = require("./routes/auth");
 const purchase = require("./routes/purchase");
+const contact = require("./routes/contact");
 
 var app = express();
 
@@ -21,9 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // use de routes
-app.use("/products", products);
-app.use("/auth", auth);
-app.use("/purchase", securedUser, purchase);
+app.use("/contact", contact); // funciones lambda (AWS  , FIREBASEXW)
+app.use("/api/products", products);
+app.use("/api/auth", auth);
+app.use("/api/purchase", securedUser, purchase);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

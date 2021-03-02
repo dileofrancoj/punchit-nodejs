@@ -5,6 +5,7 @@ const create = async (req, res) => {
     const purchase = new Purchase(req.body);
     purchase.users = req.id; // global reference for user id
     const data = await purchase.save();
+
     res.status(201).json({ message: "Compra generada", data });
   } catch (e) {
     console.error(e);

@@ -19,6 +19,10 @@ const UserSchema = Schema({
     type: String,
     required: true,
   },
+  verificationCode: {
+    type: String,
+    required: true,
+  },
   shippingAddress: {
     type: Array,
     default: [],

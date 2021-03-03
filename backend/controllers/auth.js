@@ -37,8 +37,6 @@ const create = async (req, res) => {
     const verificationCode = uid();
     user.verificationCode = verificationCode; // e94a17ec-6ad1-4a0b-a5f9-8828909be39a
     await user.save();
-    // sendMail -> hola franco dileo, gracias por registrarte. Para activar hace click acá
-    // magic link
     sendMail({
       to: email,
       subject: "Gracias por registrarte en mi aplicacion hermosa 🥰",

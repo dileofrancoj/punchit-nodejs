@@ -10,6 +10,40 @@ const single = async (req, res) => {
   }
 };
 
+const approvePurchaseProducts = async (products) => {
+  const productsArray = products.map(({ id, price, quantity }) =>
+    Product.find({
+      _id: id,
+      price: price,
+      stock: { $gte: quantity },
+      enable: true,
+    })
+  );
+
+  const [approvePurchaseResult] = await Promise.all(productsArray); // []
+  if (approvePurchaseResult.length) return true; // [[]]
+  return false;
+};
+
+const updateStock = async (products) => {
+  console.log(products);
+  try {
+    const result = products.map(({ id, quantity }) => {
+      Product.updateOne(
+        { _id: id },
+        {
+          $inc: { stock: -quantity },
+        }
+      );
+    });
+    const [updatedStock] = await Promise.all(result);
+    console.log(updatedStock);
+    return;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 const all = async (_, res) => {
   try {
     const data = await find();
@@ -29,4 +63,4 @@ const find = async (_id = null) => {
   }
 };
 
-module.exports = { all, single };
+module.exports = { all, single, updateStock, approvePurchaseProducts };

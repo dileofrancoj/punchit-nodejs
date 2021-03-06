@@ -1,4 +1,5 @@
 const uid = require("node-uuid");
+const moment = require("moment");
 
 const User = require("../models/User");
 const { hash, unhash } = require("../utils/bcrypt");
@@ -24,7 +25,22 @@ const auth = async (req, res) => {
         .json({ message: "Usuario o password incorrectos" });
     }
     res.json({ message: "Bienvenid@", JWT });
-  } catch (e) {}
+  } catch (e) {
+    console.error(e);
+    // verificar si el user no existe -> retornar un 401
+  }
+};
+
+const validateAuth = async (req, res) => {
+  try {
+    const { verificationCode } = req.params;
+    await User.findOneAndUpdate({ verificationCode }, { enable: true });
+    res.redirect(`${process.env.DEV_FRONTEND_URL}/login`);
+  } catch (e) {
+    res.redirect(
+      `${process.env.DEV_FRONTEND_URL}/login?error=INVALID_VALIDATION_EMAIL`
+    );
+  }
 };
 
 const create = async (req, res) => {
@@ -35,7 +51,8 @@ const create = async (req, res) => {
     user = new User(req.body);
     user.password = hash(password);
     const verificationCode = uid();
-    user.verificationCode = verificationCode; // e94a17ec-6ad1-4a0b-a5f9-8828909be39a
+    user.verificationCode = verificationCode;
+    user.dateExpirationCode = moment(new Date()).add(1, "hours");
     await user.save();
     sendMail({
       to: email,
@@ -49,4 +66,4 @@ const create = async (req, res) => {
   }
 };
 
-module.exports = { create, auth };
+module.exports = { create, auth, validateAuth };

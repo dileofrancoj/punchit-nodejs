@@ -1,6 +1,6 @@
 # CURSO DE REACT PUNCH IT 🥊
 
-En este repositorio encontraras las prácticas correspondientes al curso de React de PUNCH I
+En este repositorio encontraras las prácticas correspondientes al curso de Node JS de PUNCH IT
 
 ## Agradecimientos
 
@@ -34,6 +34,7 @@ A toda la comunidad de PUNCH
     nvm
 
 </p>
+
 ## División de Clases
 
 <ol>
@@ -42,6 +43,16 @@ A toda la comunidad de PUNCH
             <li>Introducción</li>
         </ul>
     </li>
+     <li> clase002 </li>
+     <li> clase003 </li>
+     <li> clase004 </li>
+     <li> clase005 </li>
+     <li> clase006 </li>
+
+        
+    
+
+    
 
 </ol>
 
@@ -59,12 +70,12 @@ A toda la comunidad de PUNCH
 
 ### Material de interes
 
-<p> Dentro de la carpeta libros encontraras apuntes iniciales e intermedios de react</p>
+<p> Dentro de la carpeta libros encontraras apuntes iniciales e intermedios de NodeJS</p>
 <hr/>
 
 ## Primeros pasos
 
-<p>Asegurate de tener instalado node, npm o yarn. Luego clona el repositorio usa la terminal para navegar a la carpeta que quieras, instalá los modulos e inicia react. </p>
+<p>Asegurate de tener instalado node, npm o yarn. Luego clona el repositorio usa la terminal para navegar a la carpeta que quieras, instalá los modulos e inicia NodeJS. </p>
 
 git clone https://github.com/dileofrancoj/punchit-nodejs
 
